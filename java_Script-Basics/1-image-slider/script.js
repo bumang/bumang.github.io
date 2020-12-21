@@ -57,36 +57,60 @@ var countR = 0;
 var count = 0;
 
 left.onclick = function() {
-    countL++;
+    if (countL < 3) {
+
+        countL++;
+    } else {
+        countL == 0;
+    }
+
     handleTileLeft(countL);
 }
 
 right.onclick = function() {
-    countR++;
+    if (countR < 3) {
+
+        countR++;
+    } else {
+        countR == 0;
+    }
     handleTileRight(countR);
 }
 
 var handleTileLeft = function(x) {
-    if (countL % 4 == 0) {
-        count = 0;
-    } else
-        count++;
-    var index = setInterval(function() {
 
-        unorderedList.style.left = '-' + count * 500 + 'px';
-        clearInterval(index);
+    var index = setInterval(function() {
+        if (count >= 300) {
+            count = -100;
+
+        }
+        count++;
+        console.log("x left:" + x);
+        unorderedList.style.left = '-' + count * 5 + 'px';
+        console.log(count);
+        console.log(count);
+        if ((count) % 100 == 0) {
+
+            clearInterval(index);
+        }
 
 
     }, 10)
 };
 
 var handleTileRight = function(x) {
-    if (count == 0) {
-        count = 3;
-    } else
-        count--;
+
     var index = setInterval(function() {
-        unorderedList.style.left = '-' + count * 500 + 'px';
-        clearInterval(index);
+        if (count == 0) {
+            count = 400;
+        }
+        count--;
+        console.log("x right:" + x);
+        unorderedList.style.left = '-' + count * 5 + 'px';
+        console.log(count);
+        if ((count) % 100 == 0) {
+
+            clearInterval(index);
+        }
     }, 10)
 };
