@@ -50,17 +50,16 @@ function Snake() {
         movingX = this.x + 10;
         movingY = this.y + 10;
 
-
-        if (movingX >= 900) {
-            this.directionX = '-1';
+        if (movingX >= 1000) {
+            this.directionX = -1;
         } else if (this.x <= 0) {
-            this.directionX = '1';
+            this.directionX = 1;
         }
 
         if (movingY >= 500) {
-            this.directionY = '-1';
+            this.directionY = -1;
         } else if (this.y <= 0) {
-            this.directionY = '1';
+            this.directionY = 1;
         }
 
         this.x = this.x + this.velocity + this.directionX;
@@ -72,8 +71,6 @@ function Snake() {
 
 var snake = new Snake();
 
-
-
 snake.initialize({
     directionX: 1,
     directionY: 0,
@@ -82,66 +79,6 @@ snake.initialize({
     y: 0,
 });
 
-document.onkeydown = function(event) {
-    var keyNumber = event.keyCode;
-
-    switch (keyNumber) {
-
-        case 37:
-
-            snake.updateValue({
-                directionX: -1,
-                directionY: 0,
-                velocity: 1,
-                y: snake.y,
-                x: snake.x
-            });
-            // changeDirection();
-            break;
-
-        case 38:
-
-            snake.updateValue({
-                directionX: 0,
-                directionY: -1,
-                velocity: 1,
-                y: snake.y,
-                x: snake.x
-            });
-            // changeDirection();
-            break;
-
-        case 39:
-
-            snake.updateValue({
-                directionX: 1,
-                directionY: 0,
-                velocity: 1,
-                y: snake.y,
-                x: snake.x
-            });
-            // changeDirection();
-            break;
-
-        case 40:
-
-            snake.updateValue({
-                    directionX: 0,
-                    directionY: 1,
-                    velocity: 1,
-                    y: snake.y,
-                    x: snake.x
-                })
-                // changeDirection();
-    }
-};
-
-
-
-
-
-
-
 setInterval(function() {
     snake.changePosition();
-}, 1);
+}, 10); 
